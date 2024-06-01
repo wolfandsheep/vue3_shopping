@@ -1,10 +1,12 @@
 <script setup>
-
+defineOptions({
+    name: 'CategoryVue'
+})
 </script>
 
 
 <template>
   <div>
-    <routerView></routerView>
+    分类页
   </div>
 </template>

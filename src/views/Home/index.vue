@@ -1,10 +1,12 @@
 <script setup>
-
+defineOptions({
+    name: 'HomeVue'
+})
 </script>
 
 
 <template>
   <div>
-    <routerView></routerView>
+    首页
   </div>
 </template>
