@@ -2,17 +2,14 @@
 // 导入
 import { useCategoryStore } from "@/stores/category.js";
 import { useScroll } from "@vueuse/core";
-
+import { computed } from "vue";
 
 // 1.获取滚动条距离顶部的距离
 const { y } = useScroll(window);
 
 // 2.从pinia中获取导航列表数据categoryList
 const CategoryStore = useCategoryStore();
-const categoryList = CategoryStore.categoryList
-
-
-
+const categoryList = computed(() => CategoryStore.categoryList);
 </script>
 
 <template>
@@ -22,7 +19,7 @@ const categoryList = CategoryStore.categoryList
       <!-- 导航区域 -->
       <ul class="app-header-nav ">
         <li class="home" v-for="item in categoryList" :key="item.id">
-          <RouterLink to="/">{{ item.name }}</RouterLink>
+          <RouterLink :to="`category/${item.id}`">{{ item.name }}</RouterLink>
         </li>
       </ul>
 

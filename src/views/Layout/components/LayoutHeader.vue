@@ -1,10 +1,14 @@
 <script setup>
-//导入
+import { computed } from 'vue'
+// 导入store
 import { useCategoryStore } from "@/stores/category.js";
+
 
 // 1.从pinia中获取导航列表数据categoryList
 const CategoryStore = useCategoryStore();
-const categoryList = CategoryStore.categoryList;
+const categoryList = computed(() => CategoryStore.categoryList)
+
+
 </script>
 
 <template>
@@ -15,7 +19,7 @@ const categoryList = CategoryStore.categoryList;
       </h1>
       <ul class="app-header-nav">
         <li class="home" v-for="item in categoryList" :key="item.id">
-          <RouterLink to="/">{{ item.name }}</RouterLink>
+          <RouterLink :to="`/category/${item.id}`" active-class="active">{{ item.name }}</RouterLink>
         </li>
 
       </ul>
@@ -24,6 +28,7 @@ const categoryList = CategoryStore.categoryList;
         <input type="text" placeholder="搜一搜">
       </div>
       <!-- 头部购物车 -->
+      
 
     </div>
   </header>
